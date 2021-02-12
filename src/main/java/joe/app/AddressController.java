@@ -17,7 +17,7 @@ public class AddressController {
         this.buddyRepo=buddyRepo;
     }
 
-    @GetMapping("/addresspage")
+    @GetMapping("/")
     public String addresspage(Model model) {
         String output ="No AddressBooks";
         List<AddressBook> books=addressRepo.findAll();
@@ -59,12 +59,12 @@ public class AddressController {
 
     @ResponseBody
     @PostMapping("/buddy")
-    BuddyInfo newBuddy(@RequestParam(name = "bookId") long id, @RequestParam(name = "name") String name, @RequestParam(name = "phonenum") String phoneNum){
+    BuddyInfo newBuddy(@RequestParam(name = "bookId") long id, @RequestParam(name = "name") String name, @RequestParam(name = "phonenum") String phoneNum, @RequestParam(name = "address") String address){
         AddressBook addressBook = addressRepo.findById(id);
         if (addressBook==null){
             return null;
         }
-        BuddyInfo newBuddy = new BuddyInfo(name,phoneNum);
+        BuddyInfo newBuddy = new BuddyInfo(name,phoneNum,address);
         addressBook.addBuddy(newBuddy);
         buddyRepo.save(newBuddy);
         addressRepo.save(addressBook);

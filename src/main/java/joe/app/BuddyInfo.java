@@ -19,6 +19,8 @@ public class BuddyInfo {
     private String name;
     private String phoneNum;
 
+    private String address;
+
     /**
      * constructor for buddy info taking a name and phone number.\
      */
@@ -31,9 +33,10 @@ public class BuddyInfo {
      * @param name String name of individual
      * @param phoneNum String phone number of individual
      */
-    public BuddyInfo(String name, String phoneNum) {
+    public BuddyInfo(String name, String phoneNum, String address) {
         this.name = name;
         this.phoneNum=phoneNum;
+        this.address=address;
     }
 
     /**
@@ -77,11 +80,27 @@ public class BuddyInfo {
     }
 
     /**
+     * get address of buddy
+     * @return String address of buddy
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * Set address of buddy
+     * @param address String address of buddy
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
      * converts buddy info into string containing name and phone number
      * @return String name and phone number
      */
     @Override
     public String toString() {
-        return "id: "+id+"| name: "+ name+" | phone number: "+phoneNum;
+        return "id: "+id+" | name: "+ name+" | phone number: "+phoneNum + " | address: "+address;
     }
 }

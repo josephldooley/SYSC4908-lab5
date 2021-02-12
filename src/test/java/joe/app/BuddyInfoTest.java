@@ -13,7 +13,8 @@ public class BuddyInfoTest {
 
     private final String name ="joe";
     private final String phoneNumber ="1231231233";
-    private BuddyInfo buddy=new BuddyInfo(name,phoneNumber);
+    private final String address ="54 home";
+    private BuddyInfo buddy=new BuddyInfo(name,phoneNumber,address);
 
     /**
      * test getName Method
@@ -34,12 +35,21 @@ public class BuddyInfoTest {
     }
 
     /**
+     * test getAddress Method
+     */
+    @Test
+    public void getAddressTest() {
+        String actual =buddy.getAddress();
+        assertEquals(address,actual);
+    }
+
+    /**
      * test toString method
      */
     @Test
     public void toStringTest() {
         String actual = buddy.toString();
-        String expected= "id: null| name: "+ name+" | phone number: "+phoneNumber;
+        String expected= "id: null | name: "+ name+" | phone number: "+phoneNumber+" | address: "+address;
         assertEquals(expected,actual);
     }
 }

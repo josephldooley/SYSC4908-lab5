@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 @SpringBootTest
 public class AddressBookTest {
 
-    private BuddyInfo b1= new BuddyInfo("joe","123-233-4122");
-    private BuddyInfo b2= new BuddyInfo("jim","222-222-2222");
+    private BuddyInfo b1= new BuddyInfo("joe","123-233-4122","45 home");
+    private BuddyInfo b2= new BuddyInfo("jim","222-222-2222","53 street");
     private AddressBook address=new AddressBook();
     /**
      * test adding a buddy to the address book
