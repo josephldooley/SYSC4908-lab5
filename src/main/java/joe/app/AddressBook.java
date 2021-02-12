@@ -1,4 +1,4 @@
-package joe.lab4;
+package joe.app;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class AddressBook {
      * constructor for address book
      */
     public AddressBook() {
-        buddies=new ArrayList<BuddyInfo>();
+        buddies=new ArrayList<>();
     }
 
     /**
@@ -77,7 +77,7 @@ public class AddressBook {
 
     /**
      * Get Address book list
-     * @return
+     * @return Collection<BuddyInfo> collection of buddyinfo
      */
     public Collection<BuddyInfo> getAddressBook() {
         return buddies;
@@ -85,7 +85,7 @@ public class AddressBook {
 
     /**
      * Set address book list
-     * @param address
+     * @param address address to set
      */
     public void setAddressBook(Collection<BuddyInfo> address) {
         this.buddies = address;
@@ -101,14 +101,15 @@ public class AddressBook {
      */
     @Override
     public String toString() {
-        String addressBookString="Address book contains: \n";
+        StringBuilder addressBookString = new StringBuilder();
+        addressBookString.append("Address book contains: \n");
         if(buddies.isEmpty()){
-            addressBookString+="No buddies here";
+            addressBookString.append("No buddies here");
         }else {
             for (BuddyInfo buddy : buddies) {
-                addressBookString += buddy + "\n";
+                addressBookString.append(buddy + "\n");
             }
         }
-        return addressBookString;
+        return addressBookString.toString();
     }
 }

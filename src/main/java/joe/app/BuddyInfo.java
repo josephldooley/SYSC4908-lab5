@@ -1,4 +1,4 @@
-package joe.lab4;
+package joe.app;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
