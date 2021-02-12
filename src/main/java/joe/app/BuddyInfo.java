@@ -22,6 +22,7 @@ public class BuddyInfo {
     /**
      * constructor for buddy info taking a name and phone number.\
      */
+
     public BuddyInfo() {
     }
 
