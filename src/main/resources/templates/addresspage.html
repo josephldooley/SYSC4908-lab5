@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Address Book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="${msg}" />
+<tr th:each="addressbook : ${books}">
+    <td th:text="${addressbook.id}"></td>
+    <td>
+        <a th:href="@{'/buddiespage/' + ${addressbook.id}}">buddies</a>
+    </td>
+</tr>
+</body>
+</html>
