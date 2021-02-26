@@ -18,7 +18,6 @@ public class BuddyInfo {
     private Long id;
     private String name;
     private String phoneNum;
-
     private String address;
 
     /**

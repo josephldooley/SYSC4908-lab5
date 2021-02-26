@@ -3,14 +3,37 @@
 <head>
     <title>Address Book</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="hello.js"></script>
 </head>
 <body>
-<p th:text="${msg}" />
+<header>Create Addressbook</header>
+<form id="bookform" action="#" th:action="@{/addressview}" method="post">
+    <p><input type="submit" value="New Book" /></p>
+</form>
+
+<header>Create BuddyInfo</header>
+<form id="buddyform"  action="#" th:action="@{/buddyview}" th:object="${buddyinfo}" method="post">
+    <p>Add to Address with Id: <input type="text" th:field="*{bookId}" /></p>
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <p>Phone Number: <input type="text" th:field="*{phoneNum}" /></p>
+    <p>Address: <input type="text" th:field="*{address}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+
+</form>
+
+<p id="noaddmsg" th:text="${msg}" />
+<table id="books">
 <tr th:each="addressbook : ${books}">
-    <td th:text="${addressbook.id}"></td>
+
+    <td th:text="'address '+ ${addressbook.id} +':'"></td>
     <td>
         <a th:href="@{'/buddiespage/' + ${addressbook.id}}">buddies</a>
     </td>
+    <br>
 </tr>
+</table>
+
+<p id="lsbuddies"></p>
 </body>
 </html>

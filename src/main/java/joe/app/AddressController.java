@@ -1,7 +1,9 @@
 package joe.app;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,18 +27,40 @@ public class AddressController {
         if(books.isEmpty()){
             model.addAttribute("msg","No addressbooks");
         }
+
+        model.addAttribute("buddyinfo", new BuddyInfoForm());
         return "addresspage";
     }
 
     @GetMapping("/buddiespage/{id}")
     public String buddiespage(@PathVariable long id, Model model) {
-        String output ="No AddressBook with id"+id;
+        String output ="No Buddies in AddressBook with id "+id;
         AddressBook addressBook = addressRepo.findById(id);
         if (addressBook!=null){
             output= addressBook.toString();
         }
         model.addAttribute("buddies", output);
         return "buddiespage";
+    }
+
+    @PostMapping("/addressview")
+    public String addressview(Model model) {
+        newAddressBook();
+        List<AddressBook> books=addressRepo.findAll();
+        model.addAttribute("books", books);
+        model.addAttribute("buddyinfo",new BuddyInfoForm());
+        return "addresspage";
+    }
+
+    @PostMapping("/buddyview")
+    public String buddyview(@ModelAttribute("buddyinfo") BuddyInfoForm buddyinfo, Model model) {
+        if (!(buddyinfo.getBookId()==null || buddyinfo.getName()==null || buddyinfo.getPhoneNum()==null  || buddyinfo.getAddress()==null )){
+            newBuddy(buddyinfo.getBookId(),buddyinfo.getName(),buddyinfo.getPhoneNum(),buddyinfo.getAddress());
+        }
+        List<AddressBook> books=addressRepo.findAll();
+        model.addAttribute("books", books);
+        model.addAttribute("buddyinfo",new BuddyInfoForm());
+        return "addresspage";
     }
 
     @ResponseBody
