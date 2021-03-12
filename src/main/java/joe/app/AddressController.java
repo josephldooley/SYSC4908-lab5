@@ -19,6 +19,12 @@ public class AddressController {
         this.buddyRepo=buddyRepo;
     }
 
+    // Login form
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
     @GetMapping("/")
     public String addresspage(Model model) {
         String output ="No AddressBooks";
