@@ -6,6 +6,10 @@
 </head>
 <body>
     <p th:text="${buddies}" />
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 <a href="/">Back to addressbooks</a>
 </html>
